@@ -10,6 +10,28 @@ const LINE_THROUGH = "lineThrough";
 let LIST = [];
 let id = 0;
 
+let data = localStorage.getItem("TODO");
+
+if (data) {
+    LIST = JSON.parse(data);
+    id = LIST.length;
+    loadList(LIST);
+} else {
+    LIST = [];
+    id = 0;
+}
+
+function loadList(array) {
+    array.forEach(function (item) {
+        addToDo(item.name, item.id, item.done, item.trash);
+    });
+}
+
+clear.addEventListener("click", function () {
+    localStorage.clear();
+    location.reload();
+});
+
 const options = { weekday: "long", month: "short", day: "numeric" };
 const today = new Date();
 
@@ -47,7 +69,7 @@ document.addEventListener("keyup", function (event) {
                 trash: false,
             });
 
-            console.log(LIST);
+            localStorage.setItem("TODO", JSON.stringify(LIST));
 
             id++;
         }
@@ -63,7 +85,7 @@ function completeToDo(element) {
 }
 
 function removeToDo(element) {
-    element.parentNode.parentNode.removeChild(eleent.parentNode);
+    element.parentNode.parentNode.removeChild(element.parentNode);
     LIST[element.id].trash = true;
 }
 
@@ -73,7 +95,9 @@ list.addEventListener("click", function (event) {
 
     if (elementJob == "complete") {
         completeToDo(element);
-    } else if (elementJob == "remove") {
+    } else if (elementJob == "delete") {
         removeToDo(element);
     }
+
+    localStorage.setItem("TODO", JSON.stringify(LIST));
 });
