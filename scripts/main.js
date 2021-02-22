@@ -1,41 +1,37 @@
-const clear = document.querySelector(".clear");
-const dateElement = document.getElementById("date");
-const list = document.getElementById("list");
-const input = document.getElementById("input");
-
+const CLEAR = document.querySelector(".clear");
+const DATE_ELEMENT = document.getElementById("date");
+const OPTIONS = { weekday: "long", month: "short", day: "numeric" };
+const TODAY = new Date();
+const LIST = document.getElementById("list");
+const INPUT = document.getElementById("input");
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle";
 const LINE_THROUGH = "lineThrough";
-
-let LIST = [];
+let list = [];
 let id = 0;
-
 let data = localStorage.getItem("TODO");
 
+DATE_ELEMENT.innerHTML = TODAY.toLocaleDateString("en-IE", OPTIONS);
+
 if (data) {
-    LIST = JSON.parse(data);
-    id = LIST.length;
-    loadList(LIST);
+    list = JSON.parse(data);
+    id = list.length;
+    loadList(list);
 } else {
-    LIST = [];
+    list = [];
     id = 0;
 }
 
 function loadList(array) {
-    array.forEach(function (item) {
-        addToDo(item.name, item.id, item.done, item.trash);
+    array.forEach(function (ITEM) {
+        addToDo(ITEM.name, ITEM.id, ITEM.done, ITEM.trash);
     });
 }
 
-clear.addEventListener("click", function () {
+CLEAR.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 });
-
-const options = { weekday: "long", month: "short", day: "numeric" };
-const today = new Date();
-
-dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 
 function addToDo(toDo, id, done, trash) {
     if (trash) {
@@ -45,59 +41,59 @@ function addToDo(toDo, id, done, trash) {
     const DONE = done ? CHECK : UNCHECK;
     const LINE = done ? LINE_THROUGH : "";
 
-    const item = ` <li class="item">
+    const ITEM = ` <li class="item">
     <i class="far ${DONE} co" job="complete" id="${id}"></i>
     <p class="text ${LINE}">${toDo}</p>
     <i class="far fa-trash-alt de" job="delete" id="${id}"></i>
     </li>`;
 
-    const position = "beforeend";
-    list.insertAdjacentHTML(position, item);
+    const POSITION = "beforeend";
+    LIST.insertAdjacentHTML(POSITION, ITEM);
 }
 
 document.addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
-        const toDo = input.value;
+        const toDo = INPUT.value;
 
         if (toDo) {
             addToDo(toDo, id, false, false);
 
-            LIST.push({
+            list.push({
                 name: toDo,
                 id: id,
                 done: false,
                 trash: false,
             });
 
-            localStorage.setItem("TODO", JSON.stringify(LIST));
+            localStorage.setItem("TODO", JSON.stringify(list));
 
             id++;
         }
-        input.value = "";
+        INPUT.value = "";
     }
 });
 
-function completeToDo(element) {
-    element.classList.toggle(CHECK);
-    element.classList.toggle(UNCHECK);
-    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
-    LIST[element.id].done = LIST[element.id].done ? false : true;
+function completeToDo(ELEMENT) {
+    ELEMENT.classList.toggle(CHECK);
+    ELEMENT.classList.toggle(UNCHECK);
+    ELEMENT.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+    list[ELEMENT.id].done = list[ELEMENT.id].done ? false : true;
 }
 
-function removeToDo(element) {
-    element.parentNode.parentNode.removeChild(element.parentNode);
-    LIST[element.id].trash = true;
+function removeToDo(ELEMENT) {
+    ELEMENT.parentNode.parentNode.removeChild(ELEMENT.parentNode);
+    list[ELEMENT.id].trash = true;
 }
 
-list.addEventListener("click", function (event) {
-    const element = event.target;
-    const elementJob = element.attributes.job.value;
+LIST.addEventListener("click", function (event) {
+    const ELEMENT = event.target;
+    const ELEMENT_JOB = ELEMENT.attributes.job.value;
 
-    if (elementJob == "complete") {
-        completeToDo(element);
-    } else if (elementJob == "delete") {
-        removeToDo(element);
+    if (ELEMENT_JOB == "complete") {
+        completeToDo(ELEMENT);
+    } else if (ELEMENT_JOB == "delete") {
+        removeToDo(ELEMENT);
     }
 
-    localStorage.setItem("TODO", JSON.stringify(LIST));
+    localStorage.setItem("TODO", JSON.stringify(list));
 });
