@@ -23,52 +23,52 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
         <link
-            href="/images/ios_splashscreens/iphone5_splash.png"
+            href="images/ios_splashscreens/iphone5_splash.png"
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/iphone6_splash.png"
+            href="images/ios_images/ios_splashscreens/iphone6_splash.png"
             media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/iphoneplus_splash.png"
+            href="images/ios_splashscreens/iphoneplus_splash.png"
             media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/iphonex_splash.png"
+            href="images/ios_splashscreens/iphonex_splash.png"
             media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/iphonexr_splash.png"
+            href="images/ios_splashscreens/iphonexr_splash.png"
             media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/iphonxsmax_splash.png"
+            href="images/ios_splashscreens/iphonexsmax_splash.png"
             media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/ipad_splash.png"
+            href="images/ios_splashscreens/ipad_splash.png"
             media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/ipadpro1_splash.png"
+            href="images/ios_splashscreens/ipadpro1_splash.png"
             media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/ipadpro3_splash.png"
+            href="images/ios_splashscreens/ipadpro3_splash.png"
             media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="/images/ios_splashscreens/ipadpro2_splash.png"
+            href="images/ios_splashscreens/ipadpro2_splash.png"
             media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
@@ -93,18 +93,19 @@
                 <div id="date"></div>
             </div>
             <div class="content">
-                <ul id="list">
-                    <!-- <li class="item">
-                        <i class="far fa-circle co" job="complete" id="0"></i>
-                        <p class="text">Drink Coffee</p>
-                        <i class="far fa-trash-alt de" job="delete" id="0"></i>
-                    </li>
-                </ul> -->
+                <ul id="list"></ul>
             </div>
             <div class="add-to-do">
                 <i class="fa fa-plus-circle"></i>
                 <input type="text" id="input" placeholder="Add an item" />
             </div>
         </div>
+        <script>
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/service_worker.js").then(function () {
+                    console.log("Service Worker Registered");
+                });
+            }
+        </script>
     </body>
 </html>

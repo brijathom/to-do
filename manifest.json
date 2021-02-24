@@ -21,9 +21,9 @@
             "sizes": "192x192"
         },
         {
-            "src": "/images/manifest_icons/maskable-icon-787x787.png",
+            "src": "/images/manifest_icons/maskable-icon-512x512.png",
             "type": "image/png",
-            "sizes": "787x787",
+            "sizes": "512x512",
             "purpose": "maskable"
         }
     ]
