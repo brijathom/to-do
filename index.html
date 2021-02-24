@@ -99,14 +99,14 @@
                 <ul id="list"></ul>
             </div>
             <div class="add-to-do">
-                <i class="fa fa-plus-circle"></i>
+                <i onclick="button()" class="fa fa-plus-circle"></i>
                 <input type="text" id="input" placeholder="Add an item" />
             </div>
         </div>
         <script>
             if ("serviceWorker" in navigator) {
                 navigator.serviceWorker.register("/service_worker.js").then(function () {
-                    console.log("Service Worker Registered");
+                    console.log();
                 });
             }
         </script>

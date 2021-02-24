@@ -73,6 +73,26 @@ document.addEventListener("keyup", function (event) {
     }
 });
 
+function button() {
+    const toDo = INPUT.value;
+
+    if (toDo) {
+        addToDo(toDo, id, false, false);
+
+        list.push({
+            name: toDo,
+            id: id,
+            done: false,
+            trash: false,
+        });
+
+        localStorage.setItem("TODO", JSON.stringify(list));
+
+        id++;
+    }
+    INPUT.value = "";
+}
+
 function completeToDo(ELEMENT) {
     ELEMENT.classList.toggle(CHECK);
     ELEMENT.classList.toggle(UNCHECK);
