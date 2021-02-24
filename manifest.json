@@ -1,0 +1,30 @@
+{
+    "short_name": "To-Do",
+    "name": "To-Do",
+    "lang": "en",
+    "description": "A to-do list application.",
+    "start_url": "/",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "dir": "ltr",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/images/manifest_icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/images/manifest_icons/icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/manifest_icons/maskable-icon-787x787.png",
+            "type": "image/png",
+            "sizes": "787x787",
+            "purpose": "maskable"
+        }
+    ]
+}

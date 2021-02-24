@@ -5,14 +5,12 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-/* ------------ container ------------ */
 .container {
     padding: 10px;
     width: 380px;
     margin: 0 auto;
 }
 
-/* ------------ header ------------ */
 .header {
     width: 380px;
     height: 200px;
@@ -47,7 +45,6 @@ body {
     font-family: "Titillium Web", sans-serif;
 }
 
-/* ------------ content ------------ */
 .content {
     width: 380px;
     height: 350px;
@@ -109,7 +106,7 @@ body {
     color: #af0000;
     cursor: pointer;
 }
-/* ------------ add item ------------ */
+
 .add-to-do {
     position: relative;
     width: 360px;
@@ -135,25 +132,21 @@ body {
     padding-left: 10px;
 }
 .add-to-do input::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
     color: #4162f6;
     font-family: "Titillium Web", sans-serif;
     font-size: 20px;
 }
 .add-to-do input::-moz-placeholder {
-    /* Firefox 19+ */
     color: #4162f6;
     font-family: "Titillium Web", sans-serif;
     font-size: 20px;
 }
 .add-to-do input:-ms-input-placeholder {
-    /* IE 10+ */
     color: #4162f6;
     font-family: "Titillium Web", sans-serif;
     font-size: 20px;
 }
 .add-to-do input:-moz-placeholder {
-    /* Firefox 18- */
     color: #4162f6;
     font-family: "Titillium Web", sans-serif;
     font-size: 20px;
