@@ -5,7 +5,7 @@
     "description": "A to-do list application.",
     "start_url": "/",
     "background_color": "#ffffff",
-    "theme_color": "#ffffff",
+    "theme_color": "#000000",
     "dir": "ltr",
     "display": "standalone",
     "orientation": "portrait",
@@ -21,9 +21,9 @@
             "sizes": "192x192"
         },
         {
-            "src": "/images/manifest_icons/maskable-icon-512x512.png",
+            "src": "/images/manifest_icons/maskable-icon-256x256.png",
             "type": "image/png",
-            "sizes": "512x512",
+            "sizes": "256x256",
             "purpose": "maskable"
         }
     ]
