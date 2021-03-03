@@ -32,13 +32,11 @@ body {
 .header {
     width: 100%;
     height: 100px;
-    background-color: #a2faf3;
-    background-image: linear-gradient(45deg, #a2faf3 0%, #6cf7ec 100%);
-    background-size: 100% 200%;
-    background-repeat: no-repeat;
+    background-color: #6cf7ec;
     border-radius: 15px 15px 0 0;
     position: relative;
 }
+
 .clear {
     width: 30px;
     height: 30px;
@@ -46,19 +44,25 @@ body {
     right: 20px;
     top: 20px;
 }
+
 .clear i {
     font-size: 30px;
 }
+
 .clear i:hover {
     cursor: pointer;
     text-shadow: 1px 3px 5px #000;
+    color: #c40d0d;
     transform: rotate(45deg);
 }
-#date {
+
+#title {
     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     bottom: 10px;
-    left: 10px;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 .content {
@@ -74,14 +78,16 @@ body {
 }
 .item {
     width: 100%;
-    height: 45px;
     min-height: 45px;
+    height: 100%;
     position: relative;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     list-style: none;
     padding: 0;
     margin: 0;
+    word-wrap: break-word;
 }
+
 .item i.co {
     position: absolute;
     font-size: 25px;
@@ -92,9 +98,11 @@ body {
 .item i.co:hover {
     cursor: pointer;
 }
+
 .fa-check-circle {
-    color: #6eb200;
+    color: #a0fa89;
 }
+
 .item p.text {
     position: absolute;
     padding: 0;
@@ -103,18 +111,21 @@ body {
     left: 55px;
     top: 10px;
     background-color: #fff;
-    max-width: 285px;
+    /* max-width: 285px; */
 }
+
 .lineThrough {
     text-decoration: line-through;
     color: #ccc;
 }
+
 .item i.de {
     position: absolute;
     font-size: 25px;
     right: 15px;
     top: 10px;
 }
+
 .item i.de:hover {
     color: #c40d0d;
     cursor: pointer;
@@ -128,24 +139,32 @@ body {
     padding: 10px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .add-to-do i {
     position: absolute;
     font-size: 40px;
+    right: 15px;
     color: #6cf7ec;
     cursor: pointer;
 }
 
 .add-to-do input {
     position: absolute;
-    left: 60px;
-    height: 45px;
-    bottom: 7px;
-    width: 75%;
     background-color: transparent;
     border: none;
+    left: 10px;
+    height: 45px;
+    bottom: 7px;
+    width: calc(100% - 80px);
+
     font-size: 20px;
     padding-left: 10px;
 }
+
+.add-to-do input:focus {
+    outline: 1px solid #aaa;
+}
+
 .add-to-do input::-webkit-input-placeholder {
     color: #6cf7ec;
     font-size: 20px;

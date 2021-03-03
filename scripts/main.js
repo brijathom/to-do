@@ -1,5 +1,4 @@
 const CLEAR = document.querySelector(".clear");
-const DATE_ELEMENT = document.getElementById("date");
 const OPTIONS = { weekday: "long", month: "short", day: "numeric" };
 const TODAY = new Date();
 const LIST = document.getElementById("list");
@@ -10,8 +9,6 @@ const LINE_THROUGH = "lineThrough";
 let list = [];
 let id = 0;
 let data = localStorage.getItem("TODO");
-
-DATE_ELEMENT.innerHTML = TODAY.toLocaleDateString("en-IE", OPTIONS);
 
 if (data) {
     list = JSON.parse(data);
@@ -46,7 +43,6 @@ function addToDo(toDo, id, done, trash) {
     <p class="text ${LINE}">${toDo}</p>
     <i class="far fa-trash-alt de" job="delete" id="${id}"></i>
     </li>`;
-
     const POSITION = "beforeend";
     LIST.insertAdjacentHTML(POSITION, ITEM);
 }
