@@ -24,6 +24,7 @@ body {
     padding: 10px 0px 3px 0px;
     width: 90vw;
     max-width: 1200px;
+    min-width: 250px;
     margin: 0 auto;
     height: 100%;
 }

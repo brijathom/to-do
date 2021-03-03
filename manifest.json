@@ -4,12 +4,18 @@
     "lang": "en",
     "description": "A to-do list application.",
     "start_url": "/",
+    "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "theme_color": "#000000",
     "dir": "ltr",
     "display": "standalone",
     "orientation": "portrait",
     "icons": [
+        {
+            "src": "/images/manifest_icons/maskable-icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        },
         {
             "src": "/images/manifest_icons/icon-512x512.png",
             "type": "image/png",
@@ -19,12 +25,6 @@
             "src": "/images/manifest_icons/icon-192x192.png",
             "type": "image/png",
             "sizes": "192x192"
-        },
-        {
-            "src": "/images/manifest_icons/maskable-icon-256x256.png",
-            "type": "image/png",
-            "sizes": "256x256",
-            "purpose": "maskable"
         }
     ]
 }
