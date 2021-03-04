@@ -99,11 +99,11 @@
             </div>
         </di>
         <script>
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("/service_worker.js").then(function () {
-                    console.log();
-                });
-            }
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service_worker.js');
+            });
+        }
         </script>
     </body>
 </html>
