@@ -21,7 +21,6 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="msapplication-starturl" content="/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-
         <link
             href="images/ios_splashscreens/iphone5_splash.png"
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
@@ -81,26 +80,24 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto" crossorigin="anonymous" />
         <link rel="stylesheet" href="styles/main.css" />
         <script src="scripts/main.js" defer></script>
-
         <title>To-Do</title>
     </head>
-
     <body>
-        <div class="container">
-            <div class="header">
-                <div class="clear">
+        <div id="container">
+            <header>
+                <div id="clear">
                     <i class="fas fa-redo"></i>
                 </div>
                 <div id="title">To-Do</div>
-            </div>
-            <div class="content">
+            </header>
+            <div id="content">
                 <ul id="list"></ul>
             </div>
-            <div class="add-to-do">
+            <div id="add-to-do">
                 <i onclick="button()" class="fas fa-plus-circle"></i>
                 <input type="text" id="input" placeholder="Add a to-do" />
             </div>
-        </div>
+        </di>
         <script>
             if ("serviceWorker" in navigator) {
                 navigator.serviceWorker.register("/service_worker.js").then(function () {

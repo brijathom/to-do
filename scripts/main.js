@@ -1,11 +1,9 @@
-const CLEAR = document.querySelector(".clear");
-const OPTIONS = { weekday: "long", month: "short", day: "numeric" };
-const TODAY = new Date();
+const CLEAR = document.getElementById("clear");
 const LIST = document.getElementById("list");
 const INPUT = document.getElementById("input");
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle";
-const LINE_THROUGH = "lineThrough";
+const LINE_THROUGH = "line-through";
 let list = [];
 let id = 0;
 let data = localStorage.getItem("TODO");
@@ -39,9 +37,9 @@ function addToDo(toDo, id, done, trash) {
     const LINE = done ? LINE_THROUGH : "";
 
     const ITEM = ` <li class="item">
-    <i class="far ${DONE} co" job="complete" id="${id}"></i>
+    <i class="far ${DONE} complete" job="complete" id="${id}"></i>
     <p class="text ${LINE}">${toDo}</p>
-    <i class="far fa-trash-alt de" job="delete" id="${id}"></i>
+    <i class="far fa-trash-alt delete" job="delete" id="${id}"></i>
     </li>`;
     const POSITION = "beforeend";
     LIST.insertAdjacentHTML(POSITION, ITEM);
@@ -50,19 +48,15 @@ function addToDo(toDo, id, done, trash) {
 document.addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
         const toDo = INPUT.value;
-
         if (toDo) {
             addToDo(toDo, id, false, false);
-
             list.push({
                 name: toDo,
                 id: id,
                 done: false,
                 trash: false,
             });
-
             localStorage.setItem("TODO", JSON.stringify(list));
-
             id++;
         }
         INPUT.value = "";
@@ -71,7 +65,6 @@ document.addEventListener("keyup", function (event) {
 
 function button() {
     const toDo = INPUT.value;
-
     if (toDo) {
         addToDo(toDo, id, false, false);
 
@@ -81,9 +74,7 @@ function button() {
             done: false,
             trash: false,
         });
-
         localStorage.setItem("TODO", JSON.stringify(list));
-
         id++;
     }
     INPUT.value = "";
@@ -104,12 +95,10 @@ function removeToDo(ELEMENT) {
 LIST.addEventListener("click", function (event) {
     const ELEMENT = event.target;
     const ELEMENT_JOB = ELEMENT.attributes.job.value;
-
     if (ELEMENT_JOB == "complete") {
         completeToDo(ELEMENT);
     } else if (ELEMENT_JOB == "delete") {
         removeToDo(ELEMENT);
     }
-
     localStorage.setItem("TODO", JSON.stringify(list));
 });

@@ -1,184 +1,174 @@
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
     height: 100%;
-    overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
-    overscroll-behavior: none;
 }
 
 body {
-    padding: 0;
-    margin: 0;
-    background-color: rgba(0, 0, 0, 0.1);
     font-family: "Roboto", sans-serif;
-    overscroll-behavior: none;
-    overflow-x: hidden;
+    background-color: #0000001a;
     height: 100%;
     width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
-.container {
-    padding: 10px 0px 3px 0px;
-    width: 90vw;
+i {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#container {
+    height: 100%;
+    width: 90%;
     max-width: 1200px;
     min-width: 250px;
     margin: 0 auto;
-    height: 100%;
+    padding: 10px 0px 10px 0px;
 }
 
-.header {
-    width: 100%;
-    height: 100px;
-    background-color: #6cf7ec;
-    border-radius: 15px 15px 0 0;
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    background-color: #6cf7ec;
+    user-select: none;
+    -webkit-user-select: none;
+    height: 75px;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
 }
 
-.clear {
-    width: 30px;
-    height: 30px;
+#clear {
     position: absolute;
+    height: 30px;
+    width: 30px;
     right: 20px;
     top: 20px;
 }
 
-.clear i {
+#clear i {
     font-size: 30px;
+    transition: 0.2s linear;
 }
 
-.clear i:hover {
-    cursor: pointer;
-    text-shadow: 1px 3px 5px #000;
-    color: #c40d0d;
-    transform: rotate(45deg);
+@media (hover: hover) and (pointer: fine) {
+    #clear i:hover {
+        cursor: pointer;
+        color: #c40d0d;
+        transform: rotate(90deg);
+    }
 }
 
 #title {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    bottom: 10px;
     font-size: 35px;
 }
 
-.content {
-    width: 100%;
-    height: calc(100% - (20px + 100px + 50px));
-    background-color: #fff;
+#content {
     overflow-y: auto;
-}
-
-.content ul {
-    padding: 0;
-    margin: 0;
-}
-.item {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    background-color: #ffffff;
     width: 100%;
-    min-height: 45px;
-    height: 100%;
-    position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    word-wrap: break-word;
+    height: calc(100% - (75px + 60px));
 }
 
-.item i.co {
-    position: absolute;
-    font-size: 25px;
-    padding-left: 5px;
-    left: 15px;
-    top: 10px;
+#content ul {
+    margin: 0;
+    padding: 0;
 }
-.item i.co:hover {
+
+#content ul li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 10px 0px 10px 0px;
+    line-height: 25px;
+    border-bottom: 1px solid #0000001a;
+}
+
+#content ul li p {
+    color: black;
+    text-decoration: none;
+    width: calc(100% - 50px);
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 50px;
+    font-size: 20px;
+}
+
+#content ul li i.complete {
+    position: absolute;
+    top: 9px;
+    left: 15px;
+    font-size: 27px;
+}
+
+#content ul li i.complete:hover {
     cursor: pointer;
 }
 
-.fa-check-circle {
+#content ul li i.fa-check-circle {
     color: #a0fa89;
 }
 
-.item p.text {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    font-size: 20px;
-    left: 55px;
-    top: 10px;
-    background-color: #fff;
-    /* max-width: 285px; */
-}
-
-.lineThrough {
+#content ul li p.line-through {
     text-decoration: line-through;
-    color: #ccc;
+    color: #cccccc;
 }
 
-.item i.de {
+#content ul li i.delete {
     position: absolute;
-    font-size: 25px;
-    right: 15px;
     top: 10px;
-}
-
-.item i.de:hover {
-    color: #c40d0d;
-    cursor: pointer;
-}
-
-.add-to-do {
-    position: relative;
-    width: 100%;
-    height: 60px;
-    background-color: #fff;
-    padding: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.add-to-do i {
-    position: absolute;
-    font-size: 40px;
     right: 15px;
-    color: #6cf7ec;
-    cursor: pointer;
+    font-size: 27px;
 }
 
-.add-to-do input {
+@media (hover: hover) and (pointer: fine) {
+    #content ul li i.delete:hover {
+        cursor: pointer;
+        color: #c40d0d;
+    }
+}
+
+#add-to-do {
+    position: relative;
+    background-color: #ffffff;
+    border-top: 1px solid #0000001a;
+    height: 60px;
+    width: 100%;
+    padding: 10px;
+}
+
+#add-to-do i {
+    position: absolute;
+    cursor: pointer;
+    color: #6cf7ec;
+    right: 15px;
+    font-size: 40px;
+}
+
+#add-to-do input {
     position: absolute;
     background-color: transparent;
     border: none;
     left: 10px;
-    height: 45px;
     bottom: 7px;
+    height: 45px;
     width: calc(100% - 80px);
-
-    font-size: 20px;
     padding-left: 10px;
+    font-size: 20px;
 }
 
-.add-to-do input:focus {
+#add-to-do input:focus {
     outline: 1px solid #aaa;
 }
 
-.add-to-do input::-webkit-input-placeholder {
-    color: #6cf7ec;
-    font-size: 20px;
-}
-.add-to-do input::-moz-placeholder {
-    color: #6cf7ec;
-    font-size: 20px;
-}
-.add-to-do input:-ms-input-placeholder {
-    color: #6cf7ec;
-    font-size: 20px;
-}
-.add-to-do input:-moz-placeholder {
-    color: #6cf7ec;
+#add-to-do input::placeholder {
     font-size: 20px;
 }
 
