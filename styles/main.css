@@ -89,6 +89,7 @@ header {
     justify-content: left;
     padding: 10px 0px 10px 0px;
     line-height: 25px;
+    min-height: 46px;
     border-bottom: 1px solid #0000001a;
 }
 

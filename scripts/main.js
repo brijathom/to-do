@@ -67,7 +67,6 @@ function button() {
     const toDo = INPUT.value;
     if (toDo) {
         addToDo(toDo, id, false, false);
-
         list.push({
             name: toDo,
             id: id,
