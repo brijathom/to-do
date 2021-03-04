@@ -42,12 +42,16 @@ self.addEventListener("fetch", (event) => {
         caches.match(event.request).then((cacheRes) => {
             return (
                 cacheRes ||
-                fetch(event.request).then((fetchRes) => {
-                    return caches.open(dynamicCacheName).then((cache) => {
-                        cache.put(event.request.url, fetchRes.clone());
-                        return fetchRes;
-                    });
-                })
+                fetch(event.request)
+                    .then((fetchRes) => {
+                        return caches.open(dynamicCacheName).then((cache) => {
+                            cache.put(event.request.url, fetchRes.clone());
+                            return fetchRes;
+                        });
+                    })
+                    .catch((error) => {
+                        console.warn("Constructing a fallback response, " + "due to an error while fetching the real response:", error);
+                    })
             );
         })
     );
