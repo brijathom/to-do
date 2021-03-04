@@ -3,6 +3,8 @@ const LIST = document.getElementById("list");
 const INPUT = document.getElementById("input");
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle";
+const SOLID_ICON = "fas";
+const REGULAR_ICON = "far";
 const LINE_THROUGH = "line-through";
 let list = [];
 let id = 0;
@@ -33,11 +35,12 @@ function addToDo(toDo, id, done, trash) {
         return;
     }
 
+    const STYLE = done ? SOLID_ICON : REGULAR_ICON;
     const DONE = done ? CHECK : UNCHECK;
     const LINE = done ? LINE_THROUGH : "";
 
     const ITEM = ` <li class="item">
-    <i class="far ${DONE} complete" job="complete" id="${id}"></i>
+    <i class="${STYLE} ${DONE} complete" job="complete" id="${id}"></i>
     <p class="text ${LINE}">${toDo}</p>
     <i class="far fa-trash-alt delete" job="delete" id="${id}"></i>
     </li>`;
@@ -80,6 +83,8 @@ function button() {
 }
 
 function completeToDo(ELEMENT) {
+    ELEMENT.classList.toggle(SOLID_ICON);
+    ELEMENT.classList.toggle(REGULAR_ICON);
     ELEMENT.classList.toggle(CHECK);
     ELEMENT.classList.toggle(UNCHECK);
     ELEMENT.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);

@@ -52,13 +52,13 @@ header {
 }
 
 #clear i {
+    cursor: pointer;
     font-size: 30px;
     transition: 0.2s linear;
 }
 
 @media (hover: hover) and (pointer: fine) {
     #clear i:hover {
-        cursor: pointer;
         color: #c40d0d;
         transform: rotate(90deg);
     }
@@ -104,17 +104,14 @@ header {
 
 #content ul li i.complete {
     position: absolute;
+    cursor: pointer;
     top: 9px;
     left: 15px;
     font-size: 27px;
 }
 
-#content ul li i.complete:hover {
-    cursor: pointer;
-}
-
 #content ul li i.fa-check-circle {
-    color: #a0fa89;
+    color: #6cf7ec;
 }
 
 #content ul li p.line-through {
@@ -124,6 +121,7 @@ header {
 
 #content ul li i.delete {
     position: absolute;
+    cursor: pointer;
     top: 10px;
     right: 15px;
     font-size: 27px;
@@ -131,7 +129,6 @@ header {
 
 @media (hover: hover) and (pointer: fine) {
     #content ul li i.delete:hover {
-        cursor: pointer;
         color: #c40d0d;
     }
 }
@@ -151,6 +148,13 @@ header {
     color: #6cf7ec;
     right: 15px;
     font-size: 40px;
+    transition: 0.1s linear;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #add-to-do i:hover {
+        transform: rotate(90deg);
+    }
 }
 
 #add-to-do input {
