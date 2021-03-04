@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="This is a to-do list application." />
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/other_images/apple-touch-icon.png" />
-        <link rel="mask-icon" href="images/other_images/safari-pinned-tab.svg" color="#5bbad5" />
+        <link rel="mask-icon" href="/images/other_images/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="manifest" href="/manifest.json" />
         <meta charset="UTF-8" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -22,37 +22,37 @@
         <meta name="msapplication-starturl" content="/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <link
-            href="images/ios_splashscreens/iphone5_splash.png"
+            href="/images/ios_splashscreens/iphone5_splash.png"
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/iphone6_splash.png"
+            href="/images/ios_splashscreens/iphone6_splash.png"
             media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/iphoneplus_splash.png"
+            href="/images/ios_splashscreens/iphoneplus_splash.png"
             media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/iphonex_splash.png"
+            href="/images/ios_splashscreens/iphonex_splash.png"
             media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/iphonexr_splash.png"
+            href="/images/ios_splashscreens/iphonexr_splash.png"
             media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/iphonexsmax_splash.png"
+            href="/images/ios_splashscreens/iphonexsmax_splash.png"
             media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/ipad_splash.png"
+            href="/images/ios_splashscreens/ipad_splash.png"
             media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
@@ -62,12 +62,12 @@
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/ipadpro3_splash.png"
+            href="/images/ios_splashscreens/ipadpro3_splash.png"
             media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
         <link
-            href="images/ios_splashscreens/ipadpro2_splash.png"
+            href="/images/ios_splashscreens/ipadpro2_splash.png"
             media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
         />
@@ -78,8 +78,8 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto" crossorigin="anonymous" />
-        <link rel="stylesheet" href="styles/main.css" />
-        <script src="scripts/main.js" defer></script>
+        <link rel="stylesheet" href="/styles/main.css" />
+        <script src="/scripts/main.js" defer></script>
         <title>To-Do</title>
     </head>
     <body>
@@ -97,13 +97,13 @@
                 <i onclick="button()" class="fas fa-plus-circle"></i>
                 <input type="text" id="input" placeholder="Add a to-do" />
             </div>
-        </di>
+        </div>
         <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service_worker.js');
-            });
-        }
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                    navigator.serviceWorker.register("/service_worker.js");
+                });
+            }
         </script>
     </body>
 </html>
