@@ -1,6 +1,6 @@
-const staticCacheName = "site-static-v1";
-const dynamicCacheName = "site-dynamic-v1";
-const assets = [
+const CACHE_NAME = "site-static-v1";
+const DYNAMIC_CACHE_NAME = "site-dynamic-v1";
+var urlsToCache = [
     "/",
     "/index.html",
     "/scripts/main.js",
@@ -21,38 +21,57 @@ const assets = [
     "https://fonts.googleapis.com/css2?family=Roboto",
 ];
 
-self.addEventListener("install", (event) => {
+self.addEventListener("install", function (event) {
+    // Perform install steps
     event.waitUntil(
-        caches.open(staticCacheName).then((cache) => {
-            cache.addAll(assets);
+        caches.open(CACHE_NAME).then(function (cache) {
+            return cache.addAll(urlsToCache);
         })
     );
 });
 
-self.addEventListener("activate", (event) => {
-    event.waitUntil(
-        caches.keys().then((keys) => {
-            return Promise.all(keys.filter((key) => key !== staticCacheName && key !== dynamicCacheName).map((key) => caches.delete(key)));
-        })
-    );
-});
+self.addEventListener("activate", function (event) {
+    var cacheAllowlist = [CACHE_NAME, DYNAMIC_CACHE_NAME];
 
-self.addEventListener("fetch", (event) => {
-    event.respondWith(
-        caches.match(event.request).then((cacheRes) => {
-            return (
-                cacheRes ||
-                fetch(event.request)
-                    .then((fetchRes) => {
-                        return caches.open(dynamicCacheName).then((cache) => {
-                            cache.put(event.request.url, fetchRes.clone());
-                            return fetchRes;
-                        });
-                    })
-                    .catch((error) => {
-                        console.warn("Constructing a fallback response, " + "due to an error while fetching the real response:", error);
-                    })
+    event.waitUntil(
+        caches.keys().then(function (cacheNames) {
+            return Promise.all(
+                cacheNames.map(function (cacheName) {
+                    if (cacheAllowlist.indexOf(cacheName) === -1) {
+                        return caches.delete(cacheName);
+                    }
+                })
             );
+        })
+    );
+});
+
+self.addEventListener("fetch", function (event) {
+    event.respondWith(
+        caches.match(event.request).then(function (response) {
+            // Cache hit - return response
+            if (response) {
+                return response;
+            }
+
+            return fetch(event.request).then(function (response) {
+                // Check if we received a valid response
+                if (!response || response.status !== 200 || response.type !== "basic") {
+                    return response;
+                }
+
+                // IMPORTANT: Clone the response. A response is a stream
+                // and because we want the browser to consume the response
+                // as well as the cache consuming the response, we need
+                // to clone it so we have two streams.
+                var responseToCache = response.clone();
+
+                caches.open(CACHE_NAME).then(function (cache) {
+                    cache.put(event.request, responseToCache);
+                });
+
+                return response;
+            });
         })
     );
 });
