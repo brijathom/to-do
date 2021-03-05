@@ -1,24 +1,25 @@
 * {
     box-sizing: border-box;
+    touch-action: none;
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Important that this is 100vh for Safari */
 html {
-    height: 100%;
+    height: 100vh;
 }
 
 body {
+    position: fixed;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
     font-family: "Roboto", sans-serif;
     background-color: #0000001a;
     height: 100%;
     width: 100%;
     padding: 0;
     margin: 0;
-}
-
-i {
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 #container {
@@ -36,8 +37,6 @@ header {
     align-items: center;
     position: relative;
     background-color: #6cf7ec;
-    user-select: none;
-    -webkit-user-select: none;
     height: 75px;
     width: 100%;
     border-radius: 10px 10px 0px 0px;
@@ -54,20 +53,30 @@ header {
 #clear i {
     cursor: pointer;
     font-size: 30px;
-    transition: 0.2s linear;
+    transition: 0.2 linear;
 }
 
-@media (hover: hover) and (pointer: fine) {
+#clear i:hover {
+    transform: rotate(90deg);
+    color: #c40d0d;
+}
+/* @media (hover: hover) and (pointer: fine) {
     #clear i:hover {
         color: #c40d0d;
         transform: rotate(90deg);
+
     }
-}
+} */
+
+/* #clear i:active {
+    color: #c40d0d;
+} */
 
 #title {
     font-size: 35px;
 }
 
+/* Important that this is 100% is used for the height calc here for Safari */
 #content {
     overflow-y: auto;
     overflow-x: hidden;
@@ -94,6 +103,8 @@ header {
 }
 
 #content ul li p {
+    user-select: text;
+    -webkit-user-select: text;
     color: black;
     text-decoration: none;
     width: calc(100% - 50px);
