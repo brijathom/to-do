@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    touch-action: none;
+    /* touch-action: none; */
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -53,12 +53,12 @@ header {
 #clear i {
     cursor: pointer;
     font-size: 30px;
-    transition: 0.2 linear;
+    transition: 0.2s linear;
 }
 
 #clear i:hover {
-    transform: rotate(90deg);
     color: #c40d0d;
+    transform: rotate(90deg);
 }
 /* @media (hover: hover) and (pointer: fine) {
     #clear i:hover {
@@ -76,7 +76,6 @@ header {
     font-size: 35px;
 }
 
-/* Important that this is 100% is used for the height calc here for Safari */
 #content {
     overflow-y: auto;
     overflow-x: hidden;
@@ -170,6 +169,8 @@ header {
 
 #add-to-do input {
     position: absolute;
+    user-select: text;
+    -webkit-user-select: text;
     background-color: transparent;
     border: none;
     left: 10px;
