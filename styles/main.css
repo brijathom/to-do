@@ -60,17 +60,6 @@ header {
     color: #c40d0d;
     transform: rotate(90deg);
 }
-/* @media (hover: hover) and (pointer: fine) {
-    #clear i:hover {
-        color: #c40d0d;
-        transform: rotate(90deg);
-
-    }
-} */
-
-/* #clear i:active {
-    color: #c40d0d;
-} */
 
 #title {
     font-size: 35px;
