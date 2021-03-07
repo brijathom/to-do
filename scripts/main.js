@@ -50,11 +50,12 @@ function addToDo(toDo, id, done, trash) {
         line = NO_LINE_THROUGH;
     }
 
-    // The HTML for an item is set using string interprolation to add the variable values. Clicking the icons or textfield will cause their respective function to be called.
-    const ITEM = ` <li class="item" job="nothing">
-    <i class="${style} ${check} complete" job="complete" id="${id}" onclick="completeToDo(event)"></i>
-    <p class="text ${line}" id="${id}" contenteditable="true" onkeydown="editToDo(event)" onblur="editToDo(event)" spellcheck="false" job="nothing">${toDo}</p>
-    <i class="far fa-trash-alt delete" job="delete" id="${id}" onclick="removeToDo(event)"></i>
+    // The HTML for an item is set using string interprolation to add the variable values.
+    // Clicking the icons or the textfield will cause their respective functions to be called.
+    const ITEM = ` <li class="item">
+    <i id="${id}" class="${style} ${check} complete"  onclick="completeToDo(event)"></i>
+    <p id="${id}" class="text ${line}"  contenteditable="true" onkeydown="editToDo(event)" onblur="editToDo(event)" spellcheck="false">${toDo}</p>
+    <i id="${id}" class="far fa-trash-alt delete" onclick="removeToDo(event)"></i>
     </li>`;
 
     // The item is inserted as the last child of the list.
@@ -98,7 +99,8 @@ function button() {
     INPUT.value = "";
 }
 
-// The appearance of an item is changed when the check circle icon it clicked. The value of the done key for the item is also toggled.
+// The appearance of an item is changed when the check circle icon it clicked.
+// The value of the done key for the item is also toggled.
 function completeToDo(event) {
     const ELEMENT = event.target;
     ELEMENT.classList.toggle(SOLID_ICON);
@@ -129,7 +131,8 @@ function editToDo(event) {
     }
 }
 
-// The list item containing the element is removed from the unordered list. The value of the trash key is set to true.
+// The list item containing the element is removed from the unordered list.
+// The value of the trash key is set to true.
 function removeToDo(event) {
     const ELEMENT = event.target;
     ELEMENT.parentNode.parentNode.removeChild(ELEMENT.parentNode);
