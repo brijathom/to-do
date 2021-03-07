@@ -6,10 +6,12 @@ const UNCHECK = "fa-circle";
 const SOLID_ICON = "fas";
 const REGULAR_ICON = "far";
 const LINE_THROUGH = "line-through";
+const NO_LINE_THROUGH = "";
 let list = [];
 let id = 0;
 let data = localStorage.getItem("TODO");
 
+// If local storage data exists it is parsed and passed to the loadList function.
 if (data) {
     list = JSON.parse(data);
     id = list.length;
@@ -19,36 +21,49 @@ if (data) {
     id = 0;
 }
 
-function loadList(array) {
-    array.forEach(function (ITEM) {
+// Each item in local storage is supplied to the addToDo function.
+function loadList(list) {
+    list.forEach(function (ITEM) {
         addToDo(ITEM.name, ITEM.id, ITEM.done, ITEM.trash);
     });
 }
 
-CLEAR.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
-});
-
+// This function displays the To-Do list on the screen.
 function addToDo(toDo, id, done, trash) {
+    // If an item's trash key is set to true it is prevented from being displayed by returning from the function.
     if (trash) {
         return;
     }
 
-    const STYLE = done ? SOLID_ICON : REGULAR_ICON;
-    const DONE = done ? CHECK : UNCHECK;
-    const LINE = done ? LINE_THROUGH : "";
+    let style;
+    let check;
+    let line;
 
-    const ITEM = ` <li class="item">
-    <i class="${STYLE} ${DONE} complete" job="complete" id="${id}"></i>
-    <p class="text ${LINE}">${toDo}</p>
-    <i class="far fa-trash-alt delete" job="delete" id="${id}"></i>
+    // The display settings for an item is set based on whether or not it is done.
+    if (done == true) {
+        style = SOLID_ICON;
+        check = CHECK;
+        line = LINE_THROUGH;
+    } else if (done == false) {
+        style = REGULAR_ICON;
+        check = UNCHECK;
+        line = NO_LINE_THROUGH;
+    }
+
+    // The HTML for an item is set using string interprolation to add the variable values. Clicking the icons or textfield will cause their respective function to be called.
+    const ITEM = ` <li class="item" job="nothing">
+    <i class="${style} ${check} complete" job="complete" id="${id}" onclick="completeToDo(event)"></i>
+    <p class="text ${line}" id="${id}" contenteditable="true" onkeydown="editToDo(event)" onblur="editToDo(event)" spellcheck="false" job="nothing">${toDo}</p>
+    <i class="far fa-trash-alt delete" job="delete" id="${id}" onclick="removeToDo(event)"></i>
     </li>`;
+
+    // The item is inserted as the last child of the list.
     const POSITION = "beforeend";
     LIST.insertAdjacentHTML(POSITION, ITEM);
 }
 
-document.addEventListener("keyup", function (event) {
+// When the enter key is pressed the value in the input field is displayed to the screen and added to local storage.
+document.getElementById("input").addEventListener("keydown", function (event) {
     if (event.key == "Enter") {
         const toDo = INPUT.value;
         if (toDo) {
@@ -66,6 +81,7 @@ document.addEventListener("keyup", function (event) {
     }
 });
 
+// When the add item button is pressed the value in the input field is displayed to the screen and added to local storage.
 function button() {
     const toDo = INPUT.value;
     if (toDo) {
@@ -82,27 +98,47 @@ function button() {
     INPUT.value = "";
 }
 
-function completeToDo(ELEMENT) {
+// The appearance of an item is changed when the check circle icon it clicked. The value of the done key for the item is also toggled.
+function completeToDo(event) {
+    const ELEMENT = event.target;
     ELEMENT.classList.toggle(SOLID_ICON);
     ELEMENT.classList.toggle(REGULAR_ICON);
     ELEMENT.classList.toggle(CHECK);
     ELEMENT.classList.toggle(UNCHECK);
     ELEMENT.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
-    list[ELEMENT.id].done = list[ELEMENT.id].done ? false : true;
-}
-
-function removeToDo(ELEMENT) {
-    ELEMENT.parentNode.parentNode.removeChild(ELEMENT.parentNode);
-    list[ELEMENT.id].trash = true;
-}
-
-LIST.addEventListener("click", function (event) {
-    const ELEMENT = event.target;
-    const ELEMENT_JOB = ELEMENT.attributes.job.value;
-    if (ELEMENT_JOB == "complete") {
-        completeToDo(ELEMENT);
-    } else if (ELEMENT_JOB == "delete") {
-        removeToDo(ELEMENT);
+    if (list[ELEMENT.id].done == false) {
+        list[ELEMENT.id].done = true;
+    } else if (list[ELEMENT.id].done == true) {
+        list[ELEMENT.id].done = false;
     }
     localStorage.setItem("TODO", JSON.stringify(list));
+}
+
+// The item is edited if the enter key is pressed or if the user navigates away from the text field.
+function editToDo(event) {
+    if (event.key == "Enter") {
+        event.preventDefault();
+        const ELEMENT = event.target;
+        list[ELEMENT.id].name = ELEMENT.textContent;
+        document.activeElement.blur();
+        localStorage.setItem("TODO", JSON.stringify(list));
+    } else if (event.type == "blur") {
+        const ELEMENT = event.target;
+        list[ELEMENT.id].name = ELEMENT.textContent;
+        localStorage.setItem("TODO", JSON.stringify(list));
+    }
+}
+
+// The list item containing the element is removed from the unordered list. The value of the trash key is set to true.
+function removeToDo(event) {
+    const ELEMENT = event.target;
+    ELEMENT.parentNode.parentNode.removeChild(ELEMENT.parentNode);
+    list[ELEMENT.id].trash = true;
+    localStorage.setItem("TODO", JSON.stringify(list));
+}
+
+// If the clear button is pressed the contents of local storage are deleted and the page is reloaded.
+CLEAR.addEventListener("click", function () {
+    localStorage.clear();
+    location.reload();
 });
