@@ -122,7 +122,7 @@ header {
 
 #content ul li p.line-through {
     text-decoration: line-through;
-    color: #cccccc;
+    color: #c5c3c3;
 }
 
 #content ul li i.delete {
@@ -171,8 +171,8 @@ header {
     border: none;
     font-family: "Roboto", sans-serif;
     left: 10px;
-    bottom: 7px;
-    height: 45px;
+    bottom: 10px;
+    height: 40px;
     width: calc(100% - 80px);
     padding-left: 10px;
     font-size: 20px;
@@ -180,6 +180,7 @@ header {
 
 #add-to-do input:focus {
     outline: none;
+    box-shadow: 0px 0px 4px 2px #b3b0b0;
 }
 
 #add-to-do input::placeholder {
@@ -190,7 +191,7 @@ header {
     width: 14px;
 }
 *::-webkit-scrollbar-track {
-    background: #e0e0e0;
+    background: #f1f1f1;
 }
 *::-webkit-scrollbar-thumb {
     background-color: #b9b9b9;
