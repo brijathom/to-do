@@ -180,7 +180,6 @@ header {
 
 #add-to-do input:focus {
     outline: none;
-    box-shadow: 0px 0px 4px 2px #b3b0b0;
 }
 
 #add-to-do input::placeholder {
