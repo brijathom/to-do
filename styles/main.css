@@ -169,6 +169,7 @@ header {
     -webkit-user-select: text;
     background-color: transparent;
     border: none;
+    font-family: "Roboto", sans-serif;
     left: 10px;
     bottom: 7px;
     height: 45px;
@@ -178,7 +179,7 @@ header {
 }
 
 #add-to-do input:focus {
-    outline: 1px solid #aaa;
+    outline: none;
 }
 
 #add-to-do input::placeholder {
@@ -189,12 +190,12 @@ header {
     width: 14px;
 }
 *::-webkit-scrollbar-track {
-    background: rgb(224, 224, 224);
+    background: #e0e0e0;
 }
 *::-webkit-scrollbar-thumb {
-    background-color: rgb(185, 185, 185);
+    background-color: #b9b9b9;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(150, 150, 150);
+    background-color: #929191;
 }
