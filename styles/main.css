@@ -43,10 +43,6 @@ header {
     border-radius: 10px 10px 0px 0px;
 }
 
-h1 {
-    padding: 12px 0px 0px 0px;
-}
-
 #clear {
     position: absolute;
     height: 30px;
