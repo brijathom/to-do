@@ -99,7 +99,7 @@ function button() {
     INPUT.value = "";
 }
 
-// The appearance of an item is changed when the check circle icon it clicked.
+// The appearance of an item is changed when the check circle icon is clicked.
 // The value of the done key for the item is also toggled.
 function completeToDo(event) {
     const ELEMENT = event.target;
